@@ -32,6 +32,8 @@ public class Main {
     }
 class Boek{
     private String titel;
+    private String auteur;
+    private String beoordeling;
     public String getTitel() {
         return titel;
     }
@@ -39,11 +41,20 @@ class Boek{
     public void setTitel(String titel) {
         this.titel = titel;
     }
+    public void setAuteur (String auteur){
+        this.auteur = auteur;
+    }
+    public String getAuteur(){
+        return auteur;
+    }
+    public void setBeoordeling (String beoordeling){
+        this.beoordeling = beoordeling;
+    }
 
     @Override
     public String toString() {
         return "Boek{" +
-                "titel='" + titel + '\'' +
+                "titel='" + titel + '\'' + '\'' + auteur + '\'' + beoordeling +
                 '}';
     }
 }
@@ -52,6 +63,7 @@ class MyContenthandler extends DefaultHandler {
     private StringBuilder tekstBuilder = new StringBuilder();
     private List<Boek> boeken;
     private Boek boek;
+
     public MyContenthandler(List<Boek> boeken){
         this.boeken=boeken;
     }
@@ -83,8 +95,14 @@ class MyContenthandler extends DefaultHandler {
         if (localName.equals("titel")){
             boek.setTitel(tekstBuilder.toString());
 
-        } else if (localName.equals("boek"))
+        }else if (localName.equals("boek")) {
             boeken.add(boek);
-        tekstBuilder.setLength(0); // terug leegmaken
+            // terug leegmaken
+        }else if ((localName.equals("auteur"))){
+            boek.setAuteur(tekstBuilder.toString());
+        }else if (localName.equals("beoordeling")){
+            boek.setBeoordeling(tekstBuilder.toString());
+        }
+        tekstBuilder.setLength(0);
     }
 }
