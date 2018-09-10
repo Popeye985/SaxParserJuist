@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<films>
+    <film genre="Sci-Fi" >
+        <titel>Star Trek: The Voyage Home</titel>
+        <jaar>1986</jaar>
+    </film>
+    <film genre="weird">
+        <titel>The HitchHiker's guide to the galaxy</titel>
+        <jaar>2004</jaar>
+    </film>
+</films>
